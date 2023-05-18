@@ -2,9 +2,9 @@
 
 import MessageForm from "../../components/MessageForm";
 import MessagesList from "../../components/MessageList";
-import Toplayout from "@/components/toplayout";
+import Toplayout from "../../components/toplayout";
 import { NextPage } from "next";
-import { MessagesProvider } from "@/utils/useMessages";
+import { MessagesProvider } from "../../utils/useMessages";
 import Layout from "../../components/Layout";
 
 const IndexPage: NextPage = () => {
