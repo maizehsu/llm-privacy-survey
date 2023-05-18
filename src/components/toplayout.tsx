@@ -1,6 +1,6 @@
 import React, { PropsWithChildren } from "react";
 import Navbar from "./navbar";
-const Layout = ({ children }: PropsWithChildren) => {
+const Toplayout = ({ children }: PropsWithChildren) => {
   return (
     <>
       <Navbar />
@@ -8,4 +8,4 @@ const Layout = ({ children }: PropsWithChildren) => {
     </>
   );
 };
-export default Layout;
+export default Toplayout;
