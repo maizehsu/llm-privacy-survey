@@ -1,6 +1,7 @@
 import Link from "next/link";
+import React, { PropsWithChildren } from "react";
 
-const Navbar = () => {
+const NavBarLayout = () => {
   return (
     <nav className="w-full py-2 bg-white border-b border-gray-200 dark:bg-neutral-900 dark:border-neutral-800">
       <div className="flex items-center justify-between w-full px-4 mx-auto max-w-7xl sm:px-6">
@@ -33,4 +34,12 @@ const Navbar = () => {
   );
 };
 
-export default Navbar;
+const NavBar = ({ children }: PropsWithChildren) => {
+  return (
+    <>
+      <NavBarLayout />
+      {children}
+    </>
+  );
+};
+export default NavBar;

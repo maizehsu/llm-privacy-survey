@@ -1,5 +1,5 @@
 import React from "react";
-import Toplayout from "../../components/toplayout";
+import Navbar from "../../components/navbar";
 
 const BlogNavigation = () => {
   // Dummy data for blogs (replace it with your actual data)
@@ -25,7 +25,7 @@ const BlogNavigation = () => {
   ];
 
   return (
-    <Toplayout>
+    <Navbar>
       <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-white">
         <div className="container mx-auto bg-white">
           <h2 className="text-2xl font-bold mb-4 flex items-center justify-center w-full px-4 mx-auto max-w-7xl sm:px-6">
@@ -49,7 +49,7 @@ const BlogNavigation = () => {
           </div>
         </div>
       </main>
-    </Toplayout>
+    </Navbar>
   );
 };
 

@@ -1,44 +1,87 @@
-import Image from "next/image";
-import Toplayout from "../components/toplayout";
+import Navbar from "../components/navbar";
 
 export default function Home() {
+  const privacyConcerns = [
+    {
+      platform: "Twitter",
+      comment:
+        "LLM tools often raise concerns about the privacy of user data. We need more transparency and control over how our data is used.",
+    },
+    {
+      platform: "Facebook",
+      comment:
+        "LLM tools are a great way to generate text, but we need to be careful about how we use them. We should be cautious about sharing sensitive information in code examples or snippets.",
+    },
+    {
+      platform: "Instagram",
+      comment:
+        "LLM tools are a great way to generate text, but we need to be careful about how we use them. We should be cautious about sharing sensitive information in code examples or snippets.",
+    },
+    {
+      platform: "Reddit",
+      comment:
+        "I recently used an LLM tool and noticed that it was collecting and storing my text data. It's important to understand how this data is being used and protected.",
+    },
+    {
+      platform: "GitHub",
+      comment:
+        "Privacy is a major concern when using LLM tools for code generation. We should be cautious about sharing sensitive information in code examples or snippets.",
+    },
+    {
+      platform: "LinkedIn",
+      comment:
+        "LLM tools are a great way to generate text, but we need to be careful about how we use them. We should be cautious about sharing sensitive information in code examples or snippets.",
+    },
+    {
+      platform: "TikTok",
+      comment:
+        "I recently used an LLM tool and noticed that it was collecting and storing my text data. It's important to understand how this data is being used and protected.",
+    },
+  ];
+
+  // Randomly split the privacyConcerns into separate arrays
+  const shuffledConcerns = privacyConcerns.sort(() => Math.random() - 0.5);
+  const numPages = 3; // Number of webpages to display the cases
+  const casesPerPage = Math.ceil(shuffledConcerns.length / numPages);
+  const pages = [];
+
+  for (let i = 0; i < numPages; i++) {
+    const startIdx = i * casesPerPage;
+    const endIdx = startIdx + casesPerPage;
+    const casesForPage = shuffledConcerns.slice(startIdx, endIdx);
+    pages.push(casesForPage);
+  }
+
   return (
-    <Toplayout>
+    <Navbar>
       <main className="flex min-h-screen flex-col items-center justify-between p-24 bg-white">
-        <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]">
-          <Image
-            className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-          />
-        </div>
+        <h2 className="text-5xl font-bold text-center text-gray-900 dark:text-gray-100">
+          LLM Privacy Survey
+        </h2>
 
-        <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]">
-          <Image
-            className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-          />
-        </div>
+        <p className="text-center text-gray-600 dark:text-gray-400">
+          LLM Privacy Survey is a survey to collect information about the
+          privacy concerns of LLM tools.
+        </p>
 
-        <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700 before:dark:opacity-10 after:dark:from-sky-900 after:dark:via-[#0141ff] after:dark:opacity-40 before:lg:h-[360px]">
-          <Image
-            className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-            src="/next.svg"
-            alt="Next.js Logo"
-            width={180}
-            height={37}
-            priority
-          />
-        </div>
+        {/* Display the cases on different webpages */}
+        {pages.map((cases, pageIndex) => (
+          <div key={pageIndex} className="my-8">
+            <h3 className="text-2xl font-semibold mb-2">
+              User Case {pageIndex + 1}
+            </h3>
+            {cases.map((concern, index) => (
+              <div key={index} className="mb-4">
+                <p className="text-gray-600 dark:text-gray-400">
+                  <span className="font-semibold">{concern.platform}: </span>
+                  {concern.comment}
+                </p>
+              </div>
+            ))}
+          </div>
+        ))}
 
-        <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
+        <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-3 lg:text-left">
           <a
             href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
             className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
@@ -46,30 +89,13 @@ export default function Home() {
             rel="noopener noreferrer"
           >
             <h2 className={`mb-3 text-2xl font-semibold`}>
-              Docs{" "}
+              Chat{" "}
               <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
                 -&gt;
               </span>
             </h2>
             <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-              Find in-depth information about Next.js features and API.
-            </p>
-          </a>
-
-          <a
-            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <h2 className={`mb-3 text-2xl font-semibold`}>
-              Learn{" "}
-              <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-                -&gt;
-              </span>
-            </h2>
-            <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-              Learn about Next.js in an interactive course with&nbsp;quizzes!
+              Chat with Chatbot and see how much it can do to depict your image.
             </p>
           </a>
 
@@ -80,34 +106,36 @@ export default function Home() {
             rel="noopener noreferrer"
           >
             <h2 className={`mb-3 text-2xl font-semibold`}>
-              Templates{" "}
+              Upload{" "}
               <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
                 -&gt;
               </span>
             </h2>
             <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-              Explore the Next.js 13 playground.
+              Join our research by uploading masked llm chat history data! Don't worry, we use your data solely for research.
             </p>
           </a>
 
           <a
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
+            href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
+            className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800 hover:dark:bg-opacity-30"
             target="_blank"
             rel="noopener noreferrer"
           >
             <h2 className={`mb-3 text-2xl font-semibold`}>
-              Deploy{" "}
+              Blog{" "}
               <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
                 -&gt;
               </span>
             </h2>
             <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-              Instantly deploy your Next.js site to a shareable URL with Vercel.
+              Learn about recent news in llm privacy through our blog page!
             </p>
           </a>
+
+
         </div>
       </main>
-    </Toplayout>
+    </Navbar>
   );
 }

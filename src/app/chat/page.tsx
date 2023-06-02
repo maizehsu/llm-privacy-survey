@@ -2,14 +2,15 @@
 
 import MessageForm from "../../components/MessageForm";
 import MessagesList from "../../components/MessageList";
-import Toplayout from "../../components/toplayout";
+import NavBar from "../../components/navbar";
 import { NextPage } from "next";
 import { MessagesProvider } from "../../utils/useMessages";
 import Layout from "../../components/Layout";
+import Navbar from "../../components/navbar";
 
 const IndexPage: NextPage = () => {
   return (
-    <Toplayout>
+    <Navbar>
       <MessagesProvider>
         <Layout>
           <MessagesList />
@@ -18,7 +19,7 @@ const IndexPage: NextPage = () => {
           </div>
         </Layout>
       </MessagesProvider>
-    </Toplayout>
+    </Navbar>
   );
 };
 
